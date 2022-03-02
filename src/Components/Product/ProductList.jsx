@@ -1,13 +1,18 @@
 import React, {useState, useEffect} from "react";
 import ProductGridView from "./ProductGridView";
+import Requests from "../../Function/CRUD/Requests";
 
-const fetchUrl = "https://fakestoreapi.com/products";
 
-const ProductList=(props)=>{
-    const [data, setData] = useState()
+const ProductList=()=>{
+    const [data, setData] = useState(undefined)
+
+    async function apicall(){
+        let getData = await Requests.getRequest("https://huntingmart.pk/api/v1/e-commerce/shop/products-list");
+        setData(getData.data);
+    }
 
     useEffect(() => {
-        fetch(fetchUrl).then((res) => res.json() ).then((data) => setData(data))
+       apicall();
         },[]
     )
 
@@ -18,9 +23,9 @@ const ProductList=(props)=>{
                <ProductGridView
                    ProductUrl={`/products/${product.id}`}
                    ProductImageUrl={product.image}
-                   ProductTitle={product.title}
+                   ProductTitle={product.name}
                    ProductPrice={product.price}
-                   ProductCategory={product.category}
+                   ProductCategory={product.sku.code}
                />
            )}
        </ul>
