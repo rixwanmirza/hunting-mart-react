@@ -1,8 +1,10 @@
 import React from "react";
 
 const Field=(props)=>{
+
+
     return(
-        <div className="form-group mb-3">
+
             <input
                 type={props.type}
                 className="form-control"
@@ -10,7 +12,7 @@ const Field=(props)=>{
                 name={props.value}
                 required={props.required}
             />
-        </div>
+
     )
 }
 

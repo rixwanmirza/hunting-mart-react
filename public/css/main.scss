@@ -1587,6 +1587,13 @@ table,
     }
   }
 
+  .tags{
+    a{
+      color: #0c63e4;
+      display: inline;
+      margin:0 10px 0 0 ;
+    }
+  }
 
 
   form{
@@ -2025,6 +2032,24 @@ table,
     }
   }
 
+}
+
+.data-list{
+  dt {
+    float: left;
+    font-weight: 700;
+    padding: 5px 15px;
+    background: #f5f5f5;
+    border: none;
+    margin: 0 0 1px;
+    min-width: 250px;
+  }
+  dd {
+    overflow: hidden;
+    padding: 5px 15px;
+    margin: 0 0 1px;
+    background: #f9f9f9;
+  }
 }
 
 @include media("<tablet") {
