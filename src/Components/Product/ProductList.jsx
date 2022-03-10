@@ -18,17 +18,13 @@ const ProductList=()=>{
 
 
     return(
-       <ul className="product-list">
-           {data?.map((product) =>
-               <ProductGridView
-                   ProductUrl={`/products/${product.id}`}
-                   ProductImageUrl={product.image}
-                   ProductTitle={product.name}
-                   ProductPrice={product.price}
-                   ProductCategory={product.sku.code}
-               />
-           )}
-       </ul>
+        <ul className="product-list" id="productAppend">
+            {data?.map((product) =>
+                   <ProductGridView
+                       product={product}
+                   />
+               )}
+           </ul>
 
     )
 }

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import { useParams, Link } from 'react-router-dom'
 import Requests from "../Function/CRUD/Requests";
 import ProductGridView from "../Components/Product/ProductGridView";
+import AddToCart from "../Function/Cart/AddToCart";
 
 
 const ProductDetail=(props)=>{
@@ -12,6 +13,9 @@ const ProductDetail=(props)=>{
     async function apiCall(){
         let getData= await  Requests.getRequest(`https://huntingmart.pk/api/v1/e-commerce/shop/single-product/${id}`);
         setData(getData.data.product);
+    }
+    function addToCart(){
+        AddToCart.addToCartStore(data);
     }
     useEffect(() => {
        apiCall();
@@ -37,6 +41,9 @@ const ProductDetail=(props)=>{
                                 <div className="price">
                                     <del className="text-muted">Rs.{data.regular_price}</del>
                                     {data.price}
+                                </div>
+                                <div className="btn-row mb-3" >
+                                    <button src="#" className="btn" onClick={addToCart}>Add to Cart</button>
                                 </div>
                                 <div className="mb-3">
                                     <b className="text-medium">Categories: </b>
